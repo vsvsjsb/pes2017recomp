@@ -1,0 +1,18 @@
+name: Inspect PES CPK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inspect file
+        run: python3 tools/inspect_cpk.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cpk-inspection-report
+          path: cpk-inspection.txt
